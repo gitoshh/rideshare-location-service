@@ -1,0 +1,12 @@
+server:
+  port: 9000
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3309/rideshare
+    username: root
+    password: t00R
+    driver-class-name: com.mysql.cj.jdbc.Driver
