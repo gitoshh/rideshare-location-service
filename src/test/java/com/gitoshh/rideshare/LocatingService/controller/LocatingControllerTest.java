@@ -1,42 +1,12 @@
 package com.gitoshh.rideshare.LocatingService.controller;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.springframework.test.annotation.DirtiesContext;
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureMockMvc
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class LocatingControllerTest {
-
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
-
-    @Test
-    void getLocationTrackerByUserId() {
-    }
-
-    @Test
-    void createLocationTracker() {
-    }
-
-    @Test
-    void getClosestDriver() {
-    }
-
-    @Test
-    void activateLocationTracker() {
-    }
-
-    @Test
-    void deactivateLocationTracker() {
-    }
-
-    @Test
-    void locatingService() {
-    }
 }

@@ -5,10 +5,13 @@ import com.gitoshh.rideshare.LocatingService.exception.NotFoundException;
 import com.gitoshh.rideshare.LocatingService.repo.LocatingRepository;
 import com.gitoshh.rideshare.LocatingService.request.LocationTrackerCreateRequest;
 import com.gitoshh.rideshare.LocatingService.request.LocationTrackerGetClosestDriverRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-public record LocatingService(LocatingRepository locatingRepository) {
+@RequiredArgsConstructor
+public class LocationTrackerService {
+    private final LocatingRepository locatingRepository;
     /**
      * Create or update the location tracker
      *

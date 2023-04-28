@@ -4,14 +4,14 @@ package com.gitoshh.rideshare.LocatingService.controller;
 import com.gitoshh.rideshare.LocatingService.entity.LocationTracker;
 import com.gitoshh.rideshare.LocatingService.request.LocationTrackerCreateRequest;
 import com.gitoshh.rideshare.LocatingService.request.LocationTrackerGetClosestDriverRequest;
-import com.gitoshh.rideshare.LocatingService.service.LocatingService;
+import com.gitoshh.rideshare.LocatingService.service.LocationTrackerService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/locations")
-public record LocatingController(LocatingService locatingService) {
+public record LocatingController(LocationTrackerService locatingService) {
 
     @GetMapping("/by/user/{userId}")
     public ResponseEntity<LocationTracker> getLocationTrackerByUserId(@PathVariable Long userId) {
@@ -19,7 +19,7 @@ public record LocatingController(LocatingService locatingService) {
     }
 
     @PostMapping
-    public ResponseEntity<LocationTracker> createLocationTracker(@Valid @RequestBody LocationTrackerCreateRequest locationTrackerCreateRequest) {
+    public ResponseEntity<LocationTracker> createLocationTracker(@Valid LocationTrackerCreateRequest locationTrackerCreateRequest) {
         return ResponseEntity.ok(locatingService.createLocationTracker(locationTrackerCreateRequest));
     }
 
