@@ -5,11 +5,13 @@ import com.gitoshh.rideshare.LocatingService.repo.LocatingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 @Log4j2
+@ConditionalOnProperty(name = "environment.name", havingValue = "local")
 public class MyRunner implements CommandLineRunner {
 
     private final LocatingRepository locatingRepository;
