@@ -5,6 +5,7 @@ import com.gitoshh.rideshare.LocatingService.entity.LocationTracker;
 import com.gitoshh.rideshare.LocatingService.request.LocationTrackerCreateRequest;
 import com.gitoshh.rideshare.LocatingService.request.LocationTrackerGetClosestDriverRequest;
 import com.gitoshh.rideshare.LocatingService.service.LocatingService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +19,12 @@ public record LocatingController(LocatingService locatingService) {
     }
 
     @PostMapping
-    public ResponseEntity<LocationTracker> createLocationTracker(LocationTrackerCreateRequest locationTrackerCreateRequest) {
+    public ResponseEntity<LocationTracker> createLocationTracker(@Valid @RequestBody LocationTrackerCreateRequest locationTrackerCreateRequest) {
         return ResponseEntity.ok(locatingService.createLocationTracker(locationTrackerCreateRequest));
     }
 
     @PostMapping("/closest-driver")
-    public ResponseEntity<LocationTracker> getClosestDriver(LocationTrackerGetClosestDriverRequest locationTrackerCreateRequest) {
+    public ResponseEntity<LocationTracker> getClosestDriver(@Valid @RequestBody LocationTrackerGetClosestDriverRequest locationTrackerCreateRequest) {
         return ResponseEntity.ok(locatingService.getClosestDriver(locationTrackerCreateRequest));
     }
 

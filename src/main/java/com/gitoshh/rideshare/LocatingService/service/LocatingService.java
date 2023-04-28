@@ -53,7 +53,7 @@ public record LocatingService(LocatingRepository locatingRepository) {
         return locatingRepository.findClosestDriver(
                 locationTrackerCreateRequest.latitude(),
                 locationTrackerCreateRequest.longitude()
-        ).orElse(null);
+        ).orElseThrow(() -> new NotFoundException("No available drivers"));
     }
 
     /**
