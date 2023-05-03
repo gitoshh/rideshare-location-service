@@ -9,3 +9,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
+
+environment:
+  name: local
+server:
+  port: 9000
+  allowed_origins: http://localhost:4200

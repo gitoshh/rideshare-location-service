@@ -15,5 +15,6 @@ public interface LocatingRepository extends JpaRepository<LocationTracker, Long>
     Optional<LocationTracker> findByUserId(Long userId);
 
     @Query(value = "SELECT *, (3959 * acos(cos(radians(37.423021)) * cos(radians(:latitude)) * cos(radians(:longitude) - radians(-122.083739)) + sin(radians(37.423021)) * sin(radians(:latitude)))) AS distance FROM location_tracker l WHERE l.is_driver = TRUE && l.is_active = TRUE HAVING distance < 10000 ORDER BY distance LIMIT 1", nativeQuery = true)
+//    @Query(value = "SELECT * FROM ( SELECT *, ( 3959 * acos(cos(radians(37.423021)) * cos(radians(:latitude)) * cos(radians(:longitude) - radians(-122.083739)) + sin(radians(37.423021)) * sin(radians(:latitude)))) AS distance FROM location_tracker WHERE location_tracker.is_driver = TRUE AND location_tracker.is_active = TRUE) AS t WHERE t.distance < 1000 ORDER BY t.distance LIMIT 1", nativeQuery = true)
     Optional<LocationTracker> findClosestDriver(double latitude, double longitude);
 }

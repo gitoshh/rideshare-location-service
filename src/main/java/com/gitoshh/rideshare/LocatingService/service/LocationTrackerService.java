@@ -19,21 +19,19 @@ public class LocationTrackerService {
      * @return location tracker
      */
     public LocationTracker createLocationTracker(LocationTrackerCreateRequest locationTrackerCreateRequest) {
-        LocationTracker locationTracker = getLocationTrackerByUserId(locationTrackerCreateRequest.userId());
+        LocationTracker locationTracker = locatingRepository.findByUserId(locationTrackerCreateRequest.userId()).orElse(null);
 
         if (locationTracker != null) {
             locationTracker.setLatitude(locationTrackerCreateRequest.latitude());
             locationTracker.setLongitude(locationTrackerCreateRequest.longitude());
-            return locatingRepository.save(locationTracker);
         } else {
-            LocationTracker newLocationTracker = LocationTracker.builder()
+            locationTracker = LocationTracker.builder()
                     .userId(locationTrackerCreateRequest.userId())
                     .latitude(locationTrackerCreateRequest.latitude())
                     .longitude(locationTrackerCreateRequest.longitude())
                     .build();
-            return locatingRepository.save(newLocationTracker);
         }
-
+        return locatingRepository.save(locationTracker);
     }
 
     /**

@@ -2,7 +2,7 @@ environment:
   name: local
 server:
   port: 9000
-  allowed_origins: http://localhost:4200
+  allowed_origins: http://localhost:4200,http://localhost:9000
 
 spring:
   jpa:
